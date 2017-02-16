@@ -7,6 +7,10 @@ module IRCBot
         registry.all
       end
 
+      def register(klass)
+        registry.register(klass)
+      end
+
       def configure_module
         @registry = IRCBot::Utils::PluginRegistry.new
       end
