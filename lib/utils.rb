@@ -1,4 +1,6 @@
 module IRCBot
+  ##
+  # This module contains well-needed auxiliary utilites.
   module Utils
 
   end
