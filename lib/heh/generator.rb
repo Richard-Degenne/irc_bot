@@ -1,8 +1,16 @@
 module IRCBot
   module Heh
+    ##
+    # Generates words for the Heh plugin.
     class Generator
+      ##
+      # A list of all English consonants.
       CONSONSANTS = %w(b c d f g h j k l m n p q r s t v w x y z)
-
+      
+      ##
+      # Generates a new word.
+      #
+      # @return [String] The generated word
       def generate
         consonant = CONSONSANTS.sample
         "#{prefixes.sample}#{consonant}e#{consonant}"
