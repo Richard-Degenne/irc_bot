@@ -20,7 +20,7 @@ module IRCBot
       private
 
       def parse_response(response)
-        URI.decode(response['location'].split('/').last)
+        URI.decode(response['location'].split('/').last).force_encoding('utf-8')
       end
     end
   end
