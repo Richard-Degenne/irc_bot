@@ -16,7 +16,13 @@ module IRCBot
       #
       # @param message
       def execute(message)
-        message.reply wiktionary.generate
+        word = ''
+        loop do
+          word = wiktionary.generate
+          break if word.ascii_only?
+          message.reply 'Non-ASCII word received... Retrying...'
+        end
+        message.reply word
       end
 
       private
