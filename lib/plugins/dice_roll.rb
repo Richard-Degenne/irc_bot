@@ -5,33 +5,32 @@ module IRCBot
     #
     # *Syntax*
     #
-    #     !roll d<sides>
+    #     !roll <rolls>d<sides>
+    #
+    # `rolls`: Number of dice to roll. Must be between 1 and 100.
+    # `sides`: Type of die to roll. Must be between 1 and 100.
     class DiceRoll
       include Cinch::Plugin
 
-      match /roll d([+-]?\d+)/
+      match /roll ([+-]?\d+)?d([+-]?\d+)/
 
       ##
       # Replies to any message matching the plugin's pattern.
       #
       # @param message
-      def execute(message, sides)
-        sides = sides.to_i
-        if sides <= 0
-          message.reply("Don't make me roll impossible dice!")
-          return
-        end
-        message.reply dice_roll.roll(
-          sides: sides.to_i
+      def execute(message, rolls, sides)
+        dice_roll = IRCBot::DiceRoll::Generator.new(message,
+          sides: sides.to_i,
+          rolls: rolls.to_i
         )
-      end
+        
+        dice_roll.run
 
-      private
+        message.reply dice_roll.total
 
-      attr_reader :dice_roll
-
-      def dice_roll
-        @dice_roll ||= IRCBot::DiceRoll::Generator.new
+        if rolls.to_i > 1
+          message.reply dice_roll.dice
+        end
       end
     end
 
