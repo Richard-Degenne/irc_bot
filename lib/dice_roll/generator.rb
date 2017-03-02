@@ -5,10 +5,13 @@ module IRCBot
       MAX_SIDES = 100
       MAX_ROLLS = 100
 
-      def initialize(message, sides:, rolls:)
+      attr_reader :sides, :rolls, :modifier
+
+      def initialize(message, sides:, rolls:, modifier:)
         @message = message
-        @sides = sides
-        @rolls = rolls
+        @sides = validate_sides(sides)
+        @rolls = validate_rolls(rolls)
+        @modifier = modifier
       end
 
       def run
@@ -16,9 +19,14 @@ module IRCBot
         nil
       end
 
-      def total
+      def raw_total
         return nil unless values
         values.reduce(0, :+)
+      end
+
+      def total
+        return nil unless values
+        raw_total + modifier
       end
 
       def dice
@@ -27,15 +35,12 @@ module IRCBot
 
       private
 
-      attr_reader :message, :sides, :rolls, :values
+      attr_reader :message, :values
 
       def build_roll
-        effective_sides = validate_sides(sides)
-        effective_rolls = validate_rolls(rolls)
-
         dice = []
-        effective_rolls.times do
-          dice << rand(effective_sides) + 1
+        rolls.times do
+          dice << rand(sides) + 1
         end
         dice
       end
