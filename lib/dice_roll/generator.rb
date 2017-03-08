@@ -1,8 +1,19 @@
 module IRCBot
   module DiceRoll
+    ##
+    # Generator for the DiceRoll plugin.
     class Generator
 
+      ##
+      # Default maximum sides of the die.
+      #
+      # @see validate_sides
       MAX_SIDES = 100
+
+      ##
+      # Default maximum dice to roll.
+      #
+      # @see validate_rolls
       MAX_ROLLS = 100
 
       attr_reader :sides, :rolls, :modifier
@@ -14,21 +25,35 @@ module IRCBot
         @modifier = modifier
       end
 
+      ##
+      # Actually build the list of dice
       def run
         @values ||= build_roll
         nil
       end
 
+      ##
+      # Gets the total of the dice rolled, modifier excluded.
+      #
+      # @return [Integer, nil] Sum of the dice, `nil` if {#run} hasn't been called yet.
       def raw_total
         return nil unless values
         values.reduce(0, :+)
       end
 
+      ##
+      # Gets the total of the dice rolled, modifier  included.
+      #
+      # @return [Integer, nil] Sum of the dice, `nil` if {#run} hasn't been called yet.
       def total
         return nil unless values
         raw_total + modifier
       end
 
+      ##
+      # Gets the dice rolled, as a list.
+      #
+      # @return [Array<Integer>] Sum of the dice, `nil` if {#run} hasn't been called yet.
       def dice
         values
       end
