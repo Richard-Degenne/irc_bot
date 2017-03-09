@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: IRCBot::Heh::Generator
+  Class: IRCBot::Wiktionary::Generator
   
     &mdash; Documentation by YARD 0.9.8
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "IRCBot::Heh::Generator";
+  pathId = "IRCBot::Wiktionary::Generator";
   relpath = '../../';
 </script>
 
@@ -37,7 +37,7 @@
         <div id="menu">
   
     <a href="../../_index.html">Index (G)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../IRCBot.html" title="IRCBot (module)">IRCBot</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Heh.html" title="IRCBot::Heh (module)">Heh</a></span></span>
+    <span class='title'><span class='object_link'><a href="../../IRCBot.html" title="IRCBot (module)">IRCBot</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Wiktionary.html" title="IRCBot::Wiktionary (module)">Wiktionary</a></span></span>
      &raquo; 
     <span class="title">Generator</span>
   
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: IRCBot::Heh::Generator
+      <div id="content"><h1>Class: IRCBot::Wiktionary::Generator
   
   
   
@@ -74,7 +74,7 @@
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">IRCBot::Heh::Generator</li>
+            <li class="next">IRCBot::Wiktionary::Generator</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/heh/generator.rb</dd>
+    <dd>lib/wiktionary/generator.rb</dd>
   </dl>
   
 </div>
@@ -102,7 +102,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Generates words for the Heh plugin.</p>
+<p>Generates words for the Wiktionary plugin.</p>
 
 
   </div>
@@ -114,11 +114,11 @@
   <h2>Constant Summary</h2>
   <dl class="constants">
     
-      <dt id="CONSONSANTS-constant" class="">CONSONSANTS =
+      <dt id="WIKTIONARY_RANDOM_URL-constant" class="">WIKTIONARY_RANDOM_URL =
         <div class="docstring">
   <div class="discussion">
     
-<p>A list of all English consonants.</p>
+<p>URL of Wiktionary&#39;s special random page.</p>
 
 
   </div>
@@ -128,7 +128,7 @@
 
 </div>
       </dt>
-      <dd><pre class="code"><span class='qwords_beg'>%w(</span><span class='tstring_content'>b</span><span class='words_sep'> </span><span class='tstring_content'>c</span><span class='words_sep'> </span><span class='tstring_content'>d</span><span class='words_sep'> </span><span class='tstring_content'>f</span><span class='words_sep'> </span><span class='tstring_content'>g</span><span class='words_sep'> </span><span class='tstring_content'>h</span><span class='words_sep'> </span><span class='tstring_content'>j</span><span class='words_sep'> </span><span class='tstring_content'>k</span><span class='words_sep'> </span><span class='tstring_content'>l</span><span class='words_sep'> </span><span class='tstring_content'>m</span><span class='words_sep'> </span><span class='tstring_content'>n</span><span class='words_sep'> </span><span class='tstring_content'>p</span><span class='words_sep'> </span><span class='tstring_content'>q</span><span class='words_sep'> </span><span class='tstring_content'>r</span><span class='words_sep'> </span><span class='tstring_content'>s</span><span class='words_sep'> </span><span class='tstring_content'>t</span><span class='words_sep'> </span><span class='tstring_content'>v</span><span class='words_sep'> </span><span class='tstring_content'>w</span><span class='words_sep'> </span><span class='tstring_content'>x</span><span class='words_sep'> </span><span class='tstring_content'>y</span><span class='words_sep'> </span><span class='tstring_content'>z</span><span class='words_sep'>)</span></pre></dd>
+      <dd><pre class="code"><span class='const'>URI</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://en.wiktionary.org/wiki/Special:Random</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></pre></dd>
     
   </dl>
 
@@ -226,14 +226,16 @@
 14
 15
 16
-17</pre>
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/heh/generator.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/wiktionary/generator.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
-  <span class='id identifier rubyid_consonant'>consonant</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#CONSONSANTS-constant" title="IRCBot::Heh::Generator::CONSONSANTS (constant)">CONSONSANTS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_prefixes'>prefixes</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_consonant'>consonant</span><span class='embexpr_end'>}</span><span class='tstring_content'>e</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_consonant'>consonant</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_get_response'>get_response</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#WIKTIONARY_RANDOM_URL-constant" title="IRCBot::Wiktionary::Generator::WIKTIONARY_RANDOM_URL (constant)">WIKTIONARY_RANDOM_URL</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='const'>StandardError</span> <span class='kw'>unless</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTPRedirection</span>
+  <span class='id identifier rubyid_parse_response'>parse_response</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
