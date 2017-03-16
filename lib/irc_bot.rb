@@ -1,4 +1,5 @@
 require 'cinch'
+require 'cinch/plugins/identify'
 require 'net/http'
 
 require 'utils'
