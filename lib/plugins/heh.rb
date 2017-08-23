@@ -9,7 +9,7 @@ module IRCBot
     class Heh
       include Cinch::Plugin
 
-      match 'heh'
+      match /([b-df-hj-np-tv-z])e\1\z/
 
       ##
       # Replies to any message matching the plugin's pattern.
