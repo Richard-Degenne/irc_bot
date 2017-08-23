@@ -8,7 +8,12 @@ module IRCBot
           c.server = 'euroserv.fr.quakenet.org'
           c.channels = ['#troswag']
 
-          c.plugins.plugins = Plugins.all
+          c.plugins.plugins = Plugins.all + [Cinch::Plugins::Identify]
+          c.plugins.options[Cinch::Plugins::Identify] = {
+            username: ENV.fetch('USERNAME'),
+            password: ENV.fetch('PASSWORD'),
+            type: :secure_quakenet
+          }
         end
       end
     end
