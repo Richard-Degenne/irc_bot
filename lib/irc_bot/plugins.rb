@@ -5,8 +5,6 @@ module IRCBot
   # It uses the Registry patterns to dynamically load all available plugins.
   module Plugins
     class << self
-      attr_reader :registry
-
       ##
       # Fetches all registered plugins.
       #
@@ -25,20 +23,19 @@ module IRCBot
         registry.register(klass)
       end
 
+      private
+
       ##
       # Module configuration.
       #
       # Must be called before any plugin registry access.
-      def configure_module
-        @registry = IRCBot::Utils::PluginRegistry.new
+      def registry
+        @registry = IRCBot::Registry.new
       end
     end
   end
 end
 
-IRCBot::Plugins.configure_module
-
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '*.rb')).each do |file|
   require file
 end
-

@@ -6,7 +6,7 @@ module IRCBot
       @bot = Cinch::Bot.new do
         configure do |c|
           c.server = 'euroserv.fr.quakenet.org'
-          c.channels = ['#troswag']
+          c.channels = ['#troswag_test']
 
           c.plugins.plugins = Plugins.all + [Cinch::Plugins::Identify]
           c.plugins.options[Cinch::Plugins::Identify] = {
