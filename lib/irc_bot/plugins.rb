@@ -30,7 +30,7 @@ module IRCBot
       #
       # Must be called before any plugin registry access.
       def registry
-        @registry = IRCBot::Registry.new
+        @registry ||= IRCBot::Registry.new
       end
     end
   end
