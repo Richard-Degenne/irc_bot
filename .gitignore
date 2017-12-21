@@ -10,3 +10,7 @@
 /.bundle
 .env
 /.yardoc
+
+# Ignore Vim file
+
+**/.*.swp
