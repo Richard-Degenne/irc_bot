@@ -4,7 +4,7 @@ module IRCBot
     # A plugin that says hello!
     #
     # *Syntax*
-    # 
+    #
     #     !hello
     class Hello
       include Cinch::Plugin
@@ -17,6 +17,16 @@ module IRCBot
       # @param message
       def execute(message)
         message.reply "Hello #{message.user.nick}!"
+      end
+
+      class << self
+        def syntax
+          '!hello'
+        end
+
+        def description
+          'Says hello to you'
+        end
       end
     end
 

@@ -20,6 +20,16 @@ module IRCBot
           message.reply generator.generate
         end
 
+        class << self
+          def syntax
+            '!heh'
+          end
+
+          def description
+            'Generates a topkek word'
+          end
+        end
+
         private
 
         def generator

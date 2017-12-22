@@ -20,6 +20,16 @@ module IRCBot
           q.first.send("SETTOPIC #{message.channel} #{generator.generate}")
         end
 
+        class << self
+          def syntax
+            '!topic'
+          end
+
+          def description
+            'Sets a motivational quote as the topic'
+          end
+        end
+
         private
 
         attr_reader :topic, :bot
