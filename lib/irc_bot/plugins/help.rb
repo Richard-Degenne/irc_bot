@@ -19,13 +19,25 @@ module IRCBot
         message.reply help_message
       end
 
+      class << self
+        def syntax
+          '!help'
+        end
+
+        def description
+          'Displays a list of available commands'
+        end
+      end
+
       private
 
       def help_message
         String.new.tap do |message|
           message << "Here are the available plugins:\n"
           Plugins.all.each do |plugin|
-            message << "- #{plugin.name}\n"
+            if plugin.respond_to?(:syntax) && plugin.respond_to?(:description)
+              message << "- #{plugin.syntax} : #{plugin.description}\n"
+            end
           end
           message << "End of the list."
         end

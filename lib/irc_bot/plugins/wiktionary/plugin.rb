@@ -26,6 +26,16 @@ module IRCBot
           message.reply word
         end
 
+        class << self
+          def syntax
+            '!word'
+          end
+
+          def description
+            'Gets a random word from Wiktionary'
+          end
+        end
+
         private
 
         attr_reader :wiktionary, :bot

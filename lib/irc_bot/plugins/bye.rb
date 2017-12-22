@@ -4,7 +4,7 @@ module IRCBot
     # A plugin that says bye!
     #
     # *Syntax*
-    # 
+    #
     #     !bye
     class Bye
       include Cinch::Plugin
@@ -17,6 +17,16 @@ module IRCBot
       # @param message
       def execute(message)
         message.reply "Bye #{message.user.nick}!"
+      end
+
+      class << self
+        def syntax
+          '!bye'
+        end
+
+        def description
+          'Says bye to you'
+        end
       end
     end
 

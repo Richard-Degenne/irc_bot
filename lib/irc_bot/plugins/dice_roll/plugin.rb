@@ -33,6 +33,16 @@ module IRCBot
           print_dice(message, dice_roll)
         end
 
+      class << self
+        def syntax
+          '!roll [COUNT]d[SIDES] [MODIFIER]'
+        end
+
+        def description
+          'Rolls dice'
+        end
+      end
+
         private
 
         def print_total(message, dice_roll)
